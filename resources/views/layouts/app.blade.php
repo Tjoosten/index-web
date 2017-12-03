@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -17,9 +15,8 @@
 <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
+            <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -27,43 +24,60 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    {{-- TODO: Register active checker. --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-newspaper-o"></i> Nieuws</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"><i class="fa fa-calendar"></i> Kalender</a>
-                    </li>
-                    <li class="nav-item @if (Request::is('visie*')) active @endif">
-                        <a class="nav-link" href="{{ route('visie.index') }}">
-                            <i class="fa fa-file-text-o"></i> Onze Visie
-                        </a>
-                    </li>
-                    <li class="nav-item @if (Request::is('ondersteuning*')) active @endif">
-                        <a class="nav-link" href="{{ route('ondersteuning.index') }}">
-                            <i class="fa fa-heart"></i> Ondersteun ons
+                        {{-- TODO: Register the route for the admin user. --}}
+                        {{-- TODO: Register the route for the quest user --}}
+
+                        <a class="nav-link" href="{{ auth()->check() ? 'admin-route' : 'guest-route' }}">
+                            <i class="fa fa-newspaper-o"></i> Nieuws
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-envelope-o"></i> Contact</a>
+                        {{-- TODO: Register route for the admin user --}}
+                        {{-- TODO: Register route for the guest user --}}
+
+                        <a class="nav-link" href="{{ auth()->check() ? 'admin-route' : 'guest-route' }}">
+                            <i class="fa fa-calendar"></i> Kalender
+                        </a>
+                    </li>
+
+                    @if (auth()->guest()) {{-- User is authenticated --}}
+                        <li class="nav-item @if (Request::is('visie*')) active @endif">
+                            <a class="nav-link" href="{{ route('visie.index') }}">
+                                <i class="fa fa-file-text-o"></i> Onze Visie
+                            </a>
+                        </li>
+                        <li class="nav-item @if (Request::is('ondersteuning*')) active @endif">
+                            <a class="nav-link" href="{{ route('ondersteuning.index') }}">
+                                <i class="fa fa-heart"></i> Ondersteun ons
+                            </a>
+                        </li>
+                    @endif
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-envelope-o"></i> Contact
+                        </a>
                     </li>
                 </ul>
             </div>
 
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    @if (Auth::guest())
+                    @if (auth()->guest())
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="?lang=nl">
                                 <span class="flag-icon flag-icon-squared flag-icon-nl"></span> NL
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="?lang=fr">
                                 <span class="flag-icon flag-icon-squared flag-icon-fr"></span> FR
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="?lang=en">
                                 <span class="flag-icon flag-icon-squared flag-icon-us"></span> EN
                             </a>
                         </li>
@@ -77,8 +91,7 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user"></i> {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -114,7 +127,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-5">
-                    <h5>Activisme_BE.</h5>
+                    <h5>{{ config('app.name', 'Laravel') }}.</h5>
+
                     <div class="row">
                         <div class="col-6">
                             <ul class="list-unstyled">
@@ -128,17 +142,37 @@
                             <ul class="list-unstyled">
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li><a href="{{ route('visie.index') }}">Onze Visie</a></li>
-                                <li><a href="">Ondersteun ons</a></li>
+                                <li><a href="{{ route('ondersteuning.index') }}">Ondersteun ons</a></li>
                                 <li><a href="{{ route('disclaimer.index') }}">Disclaimer</a></li>
                             </ul>
                         </div>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item"><a href="" class="social-facebook nav-link pl-0"><i class="fa fa-facebook fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="social-twitter nav-link"><i class="fa fa-twitter fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="social-flickr nav-link"><i class="fa fa-flickr fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="social-github nav-link"><i class="fa fa-github fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="social-contact-footer nav-link"><i class="fa fa-envelope"></i></a></li>
+                        <li class="nav-item">
+                            <a href="" class="social-facebook nav-link pl-0">
+                                <i class="fa fa-facebook fa-lg"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="social-twitter nav-link">
+                                <i class="fa fa-twitter fa-lg"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="social-flickr nav-link">
+                                <i class="fa fa-flickr fa-lg"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="social-github nav-link">
+                                <i class="fa fa-github fa-lg"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="social-contact-footer nav-link">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </li>
                     </ul>
                     <br>
                 </div>
@@ -155,7 +189,7 @@
                             <textarea class="form-control" style="border-radius: 5px;" id="exampleMessage" placeholder="Message"></textarea>
                         </fieldset>
                         <fieldset class="form-group text-xs-right">
-                            <button type="button" class="br-card btn btn-secondary-outline btn-md"><i class="fa fa-send"></i> Verstuur</button>
+                            <button type="submit" class="br-card btn btn-secondary-outline btn-md"><i class="fa fa-send"></i> Verstuur</button>
                         </fieldset>
                     </form>
                 </div>

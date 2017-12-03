@@ -30,11 +30,11 @@
 
             <div class="col-8"> {{-- Content --}}
                 <div class="tab-content">
-                    <div class="tab-pane fade @if(Request::is('instellingen/informatie')) show active @endif" id="info" role="tabpanel">
+                    <div class="tab-pane fade @if(Request::is('admin/instellingen/informatie')) show active @endif" id="info" role="tabpanel">
                         @include('account-settings.card-account-information')
                     </div>
 
-                    <div class="tab-pane fade @if (Request::is('instellingen/beveiliging')) show active @endif" id="security" role="tabpanel">
+                    <div class="tab-pane fade @if (Request::is('admin/instellingen/beveiliging')) show active @endif" id="security" role="tabpanel">
                         @include('account-settings.card-account-security')
                     </div>
                 </div>

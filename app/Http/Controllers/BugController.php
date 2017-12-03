@@ -43,7 +43,7 @@ class BugController extends Controller
             config('github.repo.organization'), config('github.repo.name'), $create['number'], $input->label
         );
 
-        if ($create && $attach) {
+        if ($create && $attach) { // The issue has been created and the label has been attached.
             flash('Jouw rapportering is opgeslagen. Wij kijken er snel naar. Bedankt voor de melding')
                 ->success();
         }
