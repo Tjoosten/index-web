@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container mt-4">
+        @include('flash::message')
+
         <div class="row">
             <div class="col-md-4"> {{-- Options --}}
                 <div class="card card-shadow br-card">
@@ -28,11 +30,11 @@
 
             <div class="col-8"> {{-- Content --}}
                 <div class="tab-content">
-                    <div class="tab-pane fade show active" id="info" role="tabpanel">
+                    <div class="tab-pane fade @if(Request::is('instellingen/informatie')) show active @endif" id="info" role="tabpanel">
                         @include('account-settings.card-account-information')
                     </div>
 
-                    <div class="tab-pane fade" id="security" role="tabpanel">
+                    <div class="tab-pane fade @if (Request::is('instellingen/beveiliging')) show active @endif" id="security" role="tabpanel">
                         @include('account-settings.card-account-security')
                     </div>
                 </div>

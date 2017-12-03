@@ -4,7 +4,7 @@
     </div>
 
     <div class="card-body">
-        <form role="form" method="POST" action="">
+        <form role="form" method="POST" action="{{ route('account.settings.info') }}">
             {{ csrf_field() }}
             {{ method_field('PATCH')  }}
 
