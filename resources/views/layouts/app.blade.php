@@ -33,14 +33,14 @@
                     <li class="nav-item">
                         <a class="nav-link"><i class="fa fa-calendar"></i> Kalender</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
+                    <li class="nav-item @if (Request::is('visie*')) active @endif">
+                        <a class="nav-link" href="{{ route('visie.index') }}">
                             <i class="fa fa-file-text-o"></i> Onze Visie
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">
-                            <i class="fa fa-heart"></i> Ondersteund ons
+                            <i class="fa fa-heart"></i> Ondersteun ons
                         </a>
                     </li>
                     <li class="nav-item">
@@ -127,7 +127,7 @@
                         <div class="col-6">
                             <ul class="list-unstyled">
                                 <li><a href="{{ url('/') }}">Home</a></li>
-                                <li><a href="">Visie</a></li>
+                                <li><a href="{{ route('visie.index') }}">Onze Visie</a></li>
                                 <li><a href="">Ondersteun ons</a></li>
                                 <li><a href="{{ route('disclaimer.index') }}">Disclaimer</a></li>
                             </ul>

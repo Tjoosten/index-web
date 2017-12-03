@@ -9,7 +9,7 @@
             </p>
             <hr class="my-4">
             <p class="lead">
-                <a class="btn br-card btn-primary btn-lg" href="#" role="button">
+                <a class="btn br-card btn-primary btn-lg" href="{{ route('visie.index') }}" role="button">
                     <i class="fa fa-info-circle"></i> Onze visie
                 </a>
             </p>

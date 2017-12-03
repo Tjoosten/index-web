@@ -19,5 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Visie routes
+Route::get('/visie', 'VisieController@index')->name('visie.index');
+
 // Disclaimer routes
 Route::get('disclaimer', 'DisclaimerController@index')->name('disclaimer.index');
