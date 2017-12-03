@@ -87,6 +87,15 @@ footer .form-control {
   }
 }
 
+.social-contact-footer {
+  color: #fafafa;
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: darken(#fafafa, 10%);
+  }
+}
+
 .social-flickr {
   color: #ff0084;
 

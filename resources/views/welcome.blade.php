@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-8"> {{-- Content --}}
                 <div class="card br-card card-shadow mb-4">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <img class="card-img-top rounded-top" src="http://placehold.it/750x300" alt="Card image cap">
                     <div class="card-body">
                         <h2 class="card-title">Post Title</h2>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
@@ -42,7 +42,9 @@
                             <div class="input-group">
                                 <input type="text" class="form-control br-card" placeholder="uw email adres">
                                 <span class="input-group-btn">
-                                    <button class="btn br-card btn-secondary" type="button">Inschrijven</button>
+                                    <button class="btn br-card btn-secondary" type="button">
+                                        <i class="fa fa-send"></i>
+                                    </button>
                                 </span>
                             </div>
                         </form>
@@ -52,34 +54,39 @@
                 <div class="card my-4 card-shadow br-card">
                     <h5 class="card-header">Categorieen</h5>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">Web Design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">HTML</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Freebies</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li>
-                                        <a href="#">JavaScript</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">CSS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Tutorials</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
+                        <a href="" style="border-radius: 3px;" class="badge badge-danger">
+                            <i class="fa fa-tag"></i> Meh
+                        </a>
                     </div>
                 </div>
 

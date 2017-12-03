@@ -15,3 +15,17 @@
 
 // VENDOR
 // @import "modules/tailwind";
+
+// Other
+.content {
+  background-color: #f5f8fa;
+}
+
+.social-mail {
+  color: lighten(#000000, 25%);
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: lighten(#000000, 45%);
+  }
+}

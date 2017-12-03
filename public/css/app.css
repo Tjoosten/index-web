@@ -14940,6 +14940,16 @@ footer .form-control {
   color: #e1e0e0;
 }
 
+.social-contact-footer {
+  color: #fafafa;
+}
+
+.social-contact-footer:hover,
+.social-contact-footer:focus {
+  text-decoration: none;
+  color: #e1e0e0;
+}
+
 .social-flickr {
   color: #ff0084;
 }
@@ -14957,5 +14967,19 @@ footer .form-control {
 .card-shadow {
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  background-color: #f5f8fa;
+}
+
+.social-mail {
+  color: #404040;
+}
+
+.social-mail:hover,
+.social-mail:focus {
+  text-decoration: none;
+  color: #737373;
 }
 

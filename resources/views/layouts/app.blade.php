@@ -38,8 +38,8 @@
                             <i class="fa fa-file-text-o"></i> Onze Visie
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
+                    <li class="nav-item @if (Request::is('ondersteuning*')) active @endif">
+                        <a class="nav-link" href="{{ route('ondersteuning.index') }}">
                             <i class="fa fa-heart"></i> Ondersteun ons
                         </a>
                     </li>
@@ -136,8 +136,9 @@
                     <ul class="nav">
                         <li class="nav-item"><a href="" class="social-facebook nav-link pl-0"><i class="fa fa-facebook fa-lg"></i></a></li>
                         <li class="nav-item"><a href="" class="social-twitter nav-link"><i class="fa fa-twitter fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="social-github nav-link"><i class="fa fa-github fa-lg"></i></a></li>
                         <li class="nav-item"><a href="" class="social-flickr nav-link"><i class="fa fa-flickr fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="" class="social-github nav-link"><i class="fa fa-github fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="" class="social-contact-footer nav-link"><i class="fa fa-envelope"></i></a></li>
                     </ul>
                     <br>
                 </div>
@@ -148,10 +149,10 @@
                 <div class="col-5">
                     <form>
                         <fieldset class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            <input type="email" class="form-control" style="border-radius: 5px;" id="exampleInputEmail1" placeholder="Enter email">
                         </fieldset>
                         <fieldset class="form-group">
-                            <textarea class="form-control" id="exampleMessage" placeholder="Message"></textarea>
+                            <textarea class="form-control" style="border-radius: 5px;" id="exampleMessage" placeholder="Message"></textarea>
                         </fieldset>
                         <fieldset class="form-group text-xs-right">
                             <button type="button" class="br-card btn btn-secondary-outline btn-md"><i class="fa fa-send"></i> Verstuur</button>
