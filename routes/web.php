@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Account settings routes
+Route::get('instellingen/{type}', 'AccountSettingsController@index')->name('account.settings');
+
 // Visie routes
 Route::get('/visie', 'VisieController@index')->name('visie.index');
 

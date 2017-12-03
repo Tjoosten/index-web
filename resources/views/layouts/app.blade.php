@@ -82,7 +82,7 @@
                                 <i class="fa fa-user"></i> {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a href="" class="dropdown-item">
+                                <a href="{{ route('account.settings', ['type' => 'informatie']) }}" class="dropdown-item">
                                     <i class="fa fa-fw fa-cogs"></i> Instellingen
                                 </a>
 
