@@ -16,6 +16,15 @@
                             {{ csrf_field() }}
 
                             <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="alert alert-warning">
+                                        <i class="fa fa-warning"></i> <strong>Waarschuwing:</strong>
+                                        Uw gegeven invoer word publiekelijk in GitHub geplaatst.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label class="col-4 col-form-label text-lg-right">Titel van het probleem: <span class="text-danger">*</span></label>
 
                                 <div class="col-8">
