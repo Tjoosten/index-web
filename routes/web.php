@@ -17,16 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/home', 'HomeController@index')->name('home');
 
 // Account settings routes
-Route::get('/instellingen/{type}', 'AccountSettingsController@index')->name('account.settings');
-Route::patch('/instellingen/security', 'AccountSettingsController@updateSecurity')->name('account.settings.security');
-Route::patch('/instellingen/info', 'AccountSettingsController@updateInformation')->name('account.settings.info');
+Route::get('/admin/instellingen/{type}', 'AccountSettingsController@index')->name('account.settings');
+Route::patch('/admin/instellingen/security', 'AccountSettingsController@updateSecurity')->name('account.settings.security');
+Route::patch('/admin/instellingen/info', 'AccountSettingsController@updateInformation')->name('account.settings.info');
 
 // Bug report routes
-Route::get('/meld-probleem', 'BugController@index')->name('bug.melding');
-Route::post('/meld-probleem-hook', 'BugController@send')->name('bug.melding.hook');
+Route::get('/admin/meld-probleem', 'BugController@index')->name('bug.melding');
+Route::post('/admin/meld-probleem-hook', 'BugController@send')->name('bug.melding.hook');
 
 // Visie routes
 Route::get('/visie', 'VisieController@index')->name('visie.index');
@@ -35,4 +35,4 @@ Route::get('/visie', 'VisieController@index')->name('visie.index');
 Route::get('/ondersteun', 'CrowdfundController@index')->name('ondersteuning.index');
 
 // Disclaimer routes
-Route::get('disclaimer', 'DisclaimerController@index')->name('disclaimer.index');
+Route::get('/disclaimer', 'DisclaimerController@index')->name('disclaimer.index');
