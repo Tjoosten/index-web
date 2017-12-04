@@ -17,7 +17,7 @@
                                 </a>
                             @endif
 
-                            <a href="#" class="badge badge-link">
+                            <a href="{{ route('news.admin.create') }}" class="badge badge-link">
                                 <i class="fa fa-plus"></i> Nieuw bericht
                             </a>
                         </span>
