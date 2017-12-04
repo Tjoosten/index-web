@@ -138,7 +138,7 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-5">
+                <div class="col-md-5">
                     <h5>{{ config('app.name', 'Laravel') }}.</h5>
 
                     <div class="row">
@@ -188,11 +188,11 @@
                     </ul>
                     <br>
                 </div>
-                <div class="col-2">
+                <div class="col-md-2">
                     <h5 class="text-md-right">Contacteer ons</h5>
                     <hr>
                 </div>
-                <div class="col-5">
+                <div class="col-md-5">
                     <form>
                         <fieldset class="form-group">
                             <input type="email" class="form-control" style="border-radius: 5px;" id="exampleInputEmail1" placeholder="Enter email">
