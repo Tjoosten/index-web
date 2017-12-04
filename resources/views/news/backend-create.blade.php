@@ -2,10 +2,11 @@
 
 @section('content')
     <div class="container mt-4">
+        {!! Breadcrumbs::render('news-create') !!}
 
-        <div class="row">
+        <div class="row mb-4">
             <div class="col-12">
-                <div class="card text-center">
+                <div class="card br-card card-shadow">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
