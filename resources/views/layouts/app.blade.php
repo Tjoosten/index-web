@@ -25,13 +25,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     {{-- TODO: Register active checker. --}}
-                    <li class="nav-item">
-                        {{-- TODO: Register the route for the admin user. --}}
-                        {{-- TODO: Register the route for the quest user --}}
+                    <li class="nav-item @if (auth()->check()) dropdown @endif">
+                        {{-- TODO: Register the route for the guest user. --}}
 
-                        <a class="nav-link" href="{{ auth()->check() ? 'admin-route' : 'guest-route' }}">
+                        <a class="nav-link @if(Request::is('admin/nieuws*') || Request::is('nieuws*')) active @endif @if(auth()->check()) dropdown-toggle @endif"
+                            href="{{ auth()->check() ? '#' : 'guest-route' }}" id="newsDropdown"
+
+                            @if (auth()->check())
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            @endif
+                        >
                             <i class="fa fa-newspaper-o"></i> Nieuws
                         </a>
+
+                        @if (auth()->check())
+                            <div class="dropdown-menu" aria-labelledby="newsDropdown">
+                                <a class="dropdown-item" href="{{ route('news.admin.index') }}"><i class="fa fa-fw fa-newspaper-o"></i> Nieuws berichten</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-fw fa-tags"></i> Categorieen</a>
+                            </div>
+                        @endif
                     </li>
                     <li class="nav-item">
                         {{-- TODO: Register route for the admin user --}}
@@ -66,17 +78,17 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     @if (auth()->guest())
-                        <li class="nav-item">
+                        <li class="nav-item @if (app()->getLocale() == 'nl') active @endif">
                             <a class="nav-link" href="?lang=nl">
                                 <span class="flag-icon flag-icon-squared flag-icon-nl"></span> NL
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @if (app()->getLocale() == 'fr') active @endif">
                             <a class="nav-link" href="?lang=fr">
                                 <span class="flag-icon flag-icon-squared flag-icon-fr"></span> FR
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @if (app()->getLocale() == 'en') active @endif">
                             <a class="nav-link" href="?lang=en">
                                 <span class="flag-icon flag-icon-squared flag-icon-us"></span> EN
                             </a>

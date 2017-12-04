@@ -28,6 +28,9 @@ Route::patch('/admin/instellingen/info', 'AccountSettingsController@updateInform
 Route::get('/admin/meld-probleem', 'BugController@index')->name('bug.melding');
 Route::post('/admin/meld-probleem-hook', 'BugController@send')->name('bug.melding.hook');
 
+// News Routes
+Route::get('/admin/nieuws', 'NewsController@backendIndex')->name('news.admin.index');
+
 // Visie routes
 Route::get('/visie', 'VisieController@index')->name('visie.index');
 
