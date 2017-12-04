@@ -10,16 +10,33 @@ use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/**
+ * Class AccountSettingsController
+ *
+ * @package App\Http\Controllers
+ */
 class AccountSettingsController extends Controller
 {
-    private $userRepository;
+    private $userRepository; /** @var UserRepository $userRepository */
 
+    /**
+     * AccountSettingsController constructor
+     * .
+     * @param UserRepository $userRepository Abstraction layer between database and controller.
+     *
+     * @return void
+     */
     public function __construct(UserRepository $userRepository)
     {
         $this->middleware(['auth']);
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * Get the account settings index page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index(): View
     {
         $userId = auth()->user()->id;
@@ -28,6 +45,13 @@ class AccountSettingsController extends Controller
         return view('account-settings.index', compact('user'));
     }
 
+    /**
+     * Update the security settings from the account.
+     *
+     * @param AccountSecurityValidator $input The user given input (validated)
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateSecurity(AccountSecurityValidator $input): RedirectResponse
     {
         $user = $this->userRepository->find(auth()->user()->id) ?: abort(Response::HTTP_NOT_FOUND);
@@ -40,6 +64,13 @@ class AccountSettingsController extends Controller
         return redirect()->route('account.settings', ['type' => 'beveiliging']);
     }
 
+    /**
+     * Update the information settings from the account.
+     *
+     * @param AccountInfoValidator $input The given user input (validated).
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateInformation(AccountInfoValidator $input): RedirectResponse
     {
         $user = $this->userRepository->find(auth()->user()->id) ?: abort(Response::HTTP_NOT_FOUND);
