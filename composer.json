@@ -11,6 +11,8 @@
         "knplabs/github-api": "^2.6",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
+        "laravel/homestead": "^7.0",
+        "laravel/horizon": "^1.0",
         "laravel/tinker": "~1.0",
         "php-http/guzzle6-adapter": "^1.1"
     },
