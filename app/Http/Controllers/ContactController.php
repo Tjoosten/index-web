@@ -12,6 +12,9 @@ use Illuminate\View\View;
  */
 class ContactController extends Controller
 {
+    /**
+     * @return View
+     */
     public function store(): View
     {
 
