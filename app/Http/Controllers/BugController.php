@@ -8,10 +8,22 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/**
+ * Class BugController
+ *
+ * @package App\Http\Controllers
+ */
 class BugController extends Controller
 {
-    private $github;
+    private $github; /** @var Client $github */
 
+    /**
+     * BugController constructor.
+     *
+     * @param Client $github The github api client wrapper.
+     *
+     * @return void
+     */
     public function __construct(Client $github)
     {
         $this->middleware(['auth']);
@@ -20,7 +32,12 @@ class BugController extends Controller
         $this->github = $github;
     }
 
-    public function index(Client $client): View
+    /**
+     * The index view for some issue report.
+     *
+     * @return View
+     */
+    public function index(): View
     {
         return view('bugs.report', [
             'labels' => $this->github->api('issue')->labels()->all(
@@ -29,6 +46,13 @@ class BugController extends Controller
         ]);
     }
 
+    /**
+     * Send the bug to GitHub.
+     *
+     * @param  BugValidator $input The user given input (validated).
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function send(BugValidator $input): RedirectResponse
     {
         // Store the issue to GitHub.
