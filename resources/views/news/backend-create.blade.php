@@ -29,9 +29,20 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="dutch" role="tabpanel" aria-labelledby="dutch-tab">dutch</div>
-                            <div class="tab-pane fade" id="french" role="tabpanel" aria-labelledby="french-tab">French</div>
-                            <div class="tab-pane fade" id="english" role="tabpanel" aria-labelledby="english-tab">english</div>
+                            <div class="tab-pane fade show active" id="dutch" role="tabpanel" aria-labelledby="dutch-tab">
+                                {{-- TODO: Create dutch partial --}}
+                                @include('news.create.form-dutch')
+                            </div>
+
+                            <div class="tab-pane fade" id="french" role="tabpanel" aria-labelledby="french-tab">
+                                {{-- TODO: Create french partial --}}
+                                @include('naws.create.form-french')
+                            </div>
+
+                            <div class="tab-pane fade" id="english" role="tabpanel" aria-labelledby="english-tab">
+                                {{-- TODO: Create english partial. --}}
+                                @include('news.create.form-english')
+                            </div>
                         </div>
                     </div>
 
