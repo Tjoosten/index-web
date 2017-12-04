@@ -28,7 +28,7 @@ class AccountSettingsController extends Controller
      */
     public function __construct(UserRepository $userRepository)
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth', 'lang']);
         $this->userRepository = $userRepository;
     }
 

@@ -7,6 +7,11 @@ use Illuminate\View\View;
 
 class VisieController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['lang']);
+    }
+
     /**
      * @return \Illuminate\View\View
      */
