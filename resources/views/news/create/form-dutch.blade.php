@@ -19,7 +19,7 @@
         <input type="text" placeholder="Bericht categorieen" class="form-control{{ $errors->has('categories.nl') ? ' is-invalid' : '' }}" name="categories[nl]" value="{{ old('categories.nl') }}">
 
         @if ($errors->has('categories.nl'))
-            <div class="invdalid-feedback">
+            <div class="invalid-feedback">
                 <strong>{{ $errors->first('categories.nl') }}</strong>
             </div>
         @else {{-- Display help text --}}

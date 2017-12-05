@@ -29,6 +29,6 @@
     <label class="col-lg-2 col-form-label text-lg-right">Bericht:</label>
 
     <div class="col-lg-10">
-        <textarea id="editor2" name="message[fr]" rows="7" placeholder="Uw nieuwsbericht" class="form-control">{{ old('message.fr') }}</textarea>
+        <textarea id="editor3" name="message[fr]" rows="7" placeholder="Uw nieuwsbericht" class="form-control">{{ old('message.fr') }}</textarea>
     </div>
 </div>

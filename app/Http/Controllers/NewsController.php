@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NewsValidator;
 use App\Repositories\NewsRepository;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -47,11 +48,12 @@ class NewsController extends Controller
         return view('news.backend-create');
     }
 
-    public function store(Request $input)
+    public function store(NewsValidator $input)
     {
         //  array:6 [▼
         //      "_token" => "9PQO9CuTUcTWgTkyXme5MiNocrZLTH7zUiMFqC6e"
-        //      "publish_date" => "2017-12-05"
+        //      "publish_date" => "2017-12-05",
+        //      "article_image" => UploadedFile {#434 ▶}
         //      "is_published" => null
         //      "title" => array:3 [▼
         //          "nl" => null
@@ -69,5 +71,7 @@ class NewsController extends Controller
         //          "en" => null
         //      ]
         // ]
+
+        dd($input->all());
     }
 }

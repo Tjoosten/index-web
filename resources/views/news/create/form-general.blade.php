@@ -2,13 +2,10 @@
     <label class="col-lg-2 col-form-label txt-lg-right">Foto artikel: <span class="text-danger">*</span></label>
 
     <div class="col-lg-10">
-        <label class=" col-lg-10 custom-file">
-            {{-- TODO: Translate the text. see: https://getbootstrap.com/docs/4.0/components/forms/#file-browser --}}
-            <input type="file" placeholder="test" name="article_image" class="custom-file-input{{ $errors->has('article_image') ? ' is-invalid' : '' }}" value="{{ old('article_image') }}">
-            <span class="custom-file-control"></span>
-        </label>
+        <input type="file" placeholder="test" name="article_image" class="form-control{{ $errors->has('article_image') ? ' is-invalid' : '' }}" value="{{ old('article_image') }}">
 
-        @if ($errors->has('image_article'))
+
+        @if ($errors->has('article_image'))
             <div class="invalid-feedback">
                 <strong>{{ $errors->first('article_image') }}</strong>
             </div>
@@ -28,20 +25,26 @@
             </div>
         @else {{-- Display help text --}}
             <small class="form-text text-muted">
-                <span class="text-strong">*</span> Datum formaat: DD/MM/YYY. (/) kan ook worden vervangen door een (-)
+                <span class="text-strong">*</span> Datum formaat: YYYY/MM/DD.
             </small>
         @endif
     </div>
 </div>
 
 <div class="form-group row">
-    <label class="col-lg-2 col-form-label text-lg-right">Publicatie status <span class="text-danger">*</span></label>
+    <label class="col-lg-2 col-form-label txt-lg-right">Publicatie status <span class="text-danger">*</span></label>
 
     <div class="col-lg-10">
-        <select class="form-control" name="is_published">
+        <select class="form-control {{ $errors->has('is_published') ? ' is-invalid' : '' }}" name="is_published">
             <option value="">-- Selecteer de status --</option>
-            <option value="Y">Publiceer</option>
-            <option value="N">Klad versie</option>
+            <option value="Y" @if (old('is_published') == 'Y') selected @endif >Publiceer</option>
+            <option value="N" @if (old('is_published') == 'N') selected @endif>Klad versie</option>
         </select>
+
+        @if ($errors->has('is_published'))
+            <div class="invalid-feedback">
+                <strong>{{ $errors->first('is_published') }}</strong>
+            </div>
+        @endif
     </div>
 </div>
