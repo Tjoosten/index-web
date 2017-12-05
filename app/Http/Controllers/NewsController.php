@@ -46,4 +46,9 @@ class NewsController extends Controller
     {
         return view('news.backend-create');
     }
+
+    public function store(Request $input)
+    {
+        dd($input->all(), $input->categories['nl']);
+    }
 }
