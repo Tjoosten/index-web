@@ -71,7 +71,5 @@ class NewsController extends Controller
         //          "en" => null
         //      ]
         // ]
-
-        dd($input->all());
     }
 }
