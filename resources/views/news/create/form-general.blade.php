@@ -33,3 +33,15 @@
         @endif
     </div>
 </div>
+
+<div class="form-group row">
+    <label class="col-lg-2 col-form-label text-lg-right">Publicatie status <span class="text-danger">*</span></label>
+
+    <div class="col-lg-10">
+        <select class="form-control" name="is_published">
+            <option value="">-- Selecteer de status --</option>
+            <option value="Y">Publiceer</option>
+            <option value="N">Klad versie</option>
+        </select>
+    </div>
+</div>

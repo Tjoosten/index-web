@@ -49,6 +49,25 @@ class NewsController extends Controller
 
     public function store(Request $input)
     {
-        dd($input->all(), $input->categories['nl']);
+        //  array:6 [▼
+        //      "_token" => "9PQO9CuTUcTWgTkyXme5MiNocrZLTH7zUiMFqC6e"
+        //      "publish_date" => "2017-12-05"
+        //      "is_published" => null
+        //      "title" => array:3 [▼
+        //          "nl" => null
+        //          "fr'" => null
+        //          "en" => null
+        //      ]
+        //      "categories" => array:3 [▼
+        //          "nl" => null
+        //          "fr" => null
+        //          "en" => null
+        //      ]
+        //      "message" => array:3 [▼
+        //          "nl" => null
+        //          "fr" => null
+        //          "en" => null
+        //      ]
+        // ]
     }
 }
