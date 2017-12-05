@@ -37,7 +37,7 @@
                             {{ csrf_field() }}
 
                             <div class="tab-content">
-                                <div class="tab-content fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                                <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
                                     @include('news.create.form-general')
                                 </div>
 
