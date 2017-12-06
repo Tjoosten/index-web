@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontController@index')->name('index');
 
 Auth::routes();
 
@@ -27,6 +25,12 @@ Route::patch('/admin/instellingen/info', 'AccountSettingsController@updateInform
 // Bug report routes
 Route::get('/admin/meld-probleem', 'BugController@index')->name('bug.melding');
 Route::post('/admin/meld-probleem-hook', 'BugController@send')->name('bug.melding.hook');
+
+// News Routes
+Route::get('/admin/nieuws', 'NewsController@backendIndex')->name('news.admin.index');
+Route::get('/admin/nieuws/nieuw', 'NewsController@create')->name('news.admin.create');
+Route::get('/admin/news/delete/{id}', 'NewsController@delete')->name('news.admin.delete');
+Route::post('admin/news/opslaan', 'NewsController@store')->name('news.admin.store');
 
 // Visie routes
 Route::get('/visie', 'VisieController@index')->name('visie.index');

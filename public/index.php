@@ -7,6 +7,9 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+// TODO: https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md
+//       Check if we can use this extended PSR guide (namespaces)
+
 define('LARAVEL_START', microtime(true));
 
 /*
