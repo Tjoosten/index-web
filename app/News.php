@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\MediaLibrary\Media;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Spatie\Tags\HasTags;
 use Spatie\Translatable\HasTranslations;
 
 /**
@@ -18,7 +19,7 @@ use Spatie\Translatable\HasTranslations;
  */
 class News extends Model implements HasMediaConversions
 {
-    use HasTranslations, HasMediaTrait, HasSlug;
+    use HasTranslations, HasMediaTrait, HasSlug, HasTags;
 
 
     /**
@@ -26,7 +27,7 @@ class News extends Model implements HasMediaConversions
      *
      * @var array
      */
-    protected $fillable = ['slug', 'publish_date', 'title', 'message', 'author_id'];
+    protected $fillable = ['slug', 'publish_date', 'title', 'message', 'author_id', 'tags'];
 
     /**
      * Translation fields for the database table.
@@ -71,5 +72,10 @@ class News extends Model implements HasMediaConversions
             ->saveSlugsTo('slug')
             ->slugsShouldBeNoLongerThan(50)
             ->usingLanguage('nl');
+    }
+
+    public static function getTagClassName(): string
+    {
+        return Tags::class;
     }
 }

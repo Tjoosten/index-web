@@ -12,13 +12,18 @@ use Illuminate\View\View;
  */
 class ContactController extends Controller
 {
+    /**
+     * ContactController constructor.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware(['lang']);
     }
 
     /**
-     * @return View
+     * @return \Illuminate\View\View
      */
     public function store(): View
     {

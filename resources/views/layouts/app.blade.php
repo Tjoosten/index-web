@@ -26,6 +26,18 @@
                 <ul class="navbar-nav mr-auto">
                     {{-- TODO: Register active checker. --}}
                     <li class="nav-item @if (auth()->check()) dropdown @endif">
+                        @if (auth()->check())
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-users"></i> Gebruikers
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-users"></i> Overzicht</a>
+                                    <a class="dropdown-item" href="#"><i class="fa fa-fw fa-key"></i> Rechten en permissies</a>
+                                </div>
+                            </li>
+                        @endif
+
                         {{-- TODO: Register the route for the guest user. --}}
 
                         <a class="nav-link @if(Request::is('admin/nieuws*') || Request::is('nieuws*')) active @endif @if(auth()->check()) dropdown-toggle @endif"
@@ -41,7 +53,7 @@
                         @if (auth()->check())
                             <div class="dropdown-menu" aria-labelledby="newsDropdown">
                                 <a class="dropdown-item" href="{{ route('news.admin.index') }}"><i class="fa fa-fw fa-newspaper-o"></i> Nieuws berichten</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-fw fa-tags"></i> Categorieen</a>
+                                <a class="dropdown-item" href="{{ route('category.admin.index') }}"><i class="fa fa-fw fa-tags"></i> Categorieen</a>
                             </div>
                         @endif
                     </li>
@@ -212,6 +224,11 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script>
+    window.setTimeout(function() {
+        $("div.alert").not('alert-important').hide();
+    }, 3000);
+</script>
 @stack('scripts')
 </body>
 </html>

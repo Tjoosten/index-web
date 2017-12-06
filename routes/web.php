@@ -35,6 +35,12 @@ Route::post('admin/news/opslaan', 'NewsController@store')->name('news.admin.stor
 // Visie routes
 Route::get('/visie', 'VisieController@index')->name('visie.index');
 
+// Category routes
+Route::get('/admin/categories/index', 'CategoryController@index')->name('category.admin.index');
+Route::get('/admin/categories/nieuw', 'CategoryController@create')->name('category.admin.create');
+Route::get('/admin/categories/verwijder/{id}', 'CategoryController@delete')->name('category.admin.delete');
+Route::post('/admin/categories/create', 'CategoryController@store')->name('category.admin.store');
+
 // Crowdfund routes
 Route::get('/ondersteun', 'CrowdfundController@index')->name('ondersteuning.index');
 

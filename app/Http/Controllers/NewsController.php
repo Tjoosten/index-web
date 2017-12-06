@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsValidator;
 use App\Repositories\NewsRepository;
+use App\Repositories\TagsRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,20 +18,23 @@ use Illuminate\View\View;
 class NewsController extends Controller
 {
     private $newsRepository; /** @var NewsRepository $newsRepository */
+    private $tagsRepository; /** @var TagsRepository $tagsRepository */
 
     /**
      * NewsController constructor.
      *
-     * @param NewsRepository $newsRepository
+     * @param NewsRepository $newsRepository Abstraction layer between database and controller
+     * @param TagsRepository $tagsRepository Abstraction layer between database and controller
      *
      * @return void
      */
-    public function __construct(NewsRepository $newsRepository)
+    public function __construct(NewsRepository $newsRepository, TagsRepository $tagsRepository)
     {
         $this->middleware('auth');
         $this->middleware('lang');
 
         $this->newsRepository = $newsRepository;
+        $this->tagsRepository = $tagsRepository;
     }
 
     /**
@@ -67,8 +71,6 @@ class NewsController extends Controller
      */
     public function store(NewsValidator $input): RedirectResponse
     {
-        $input->merge(['author_id' => $input->user()->id]);
-
         if ($article = $this->newsRepository->create($input->except(['_token']))) {
             $article->addMedia($input->file('article_image'))->toMediaCollection('images');
 
@@ -81,6 +83,9 @@ class NewsController extends Controller
     /**
      * Geef een specifiek artikel weer. Indien een artikel niet gevonden is zal er
      * een error worden weeregegen. (HTTP 404 - Not Found)
+     *
+     * @todo Implementatie routering
+     * @todo Implementatie view.
      *
      * @param  string $articleSlug The slug voor het gegeven artikel. (slug = URI fragment)
      *

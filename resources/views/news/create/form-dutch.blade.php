@@ -16,7 +16,7 @@
     <label class="col-lg-2 col-form-label text-lg-right">Categorieen: <span class="text-danger">*</span></label>
 
     <div class="col-lg-10">
-        <input type="text" placeholder="Bericht categorieen" class="form-control{{ $errors->has('categories.nl') ? ' is-invalid' : '' }}" name="categories[nl]" value="{{ old('categories.nl') }}">
+        <input type="text"  data-role="tagsinput"  placeholder="Bericht categorieen" class="form-control{{ $errors->has('categories.nl') ? ' is-invalid' : '' }}" name="categories[nl]" value="{{ old('categories.nl') }}">
 
         @if ($errors->has('categories.nl'))
             <div class="invalid-feedback">
