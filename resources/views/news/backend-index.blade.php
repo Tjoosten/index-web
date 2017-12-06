@@ -11,7 +11,7 @@
                         <i class="fa fa-fw fa-newspaper-o"></i> Nieuwsberichten beheer
 
                         <span class="pull-right">
-                            @if (count($messages) > 0)
+                            @if (count($messages) > 12)
                                 <a href="" class="badge badge-link">
                                     <i class="fa fa-search"></i> Zoek nieuws bericht
                                 </a>
@@ -52,7 +52,18 @@
                                                     <td>{{ $message->title }}</td>
                                                     <td>{{ $message->created_at->diffForHumans() }}</td>
 
-                                                    <td> {{-- Options --}}
+                                                    <td class="text-right"> {{-- Options --}}
+                                                        <a class="text-muted" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                                                            <i class="fa fa-fw fa-file-text-o"></i>
+                                                        </a>
+
+                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                                                            <i class="fa fa-fw fa-pencil fa-close"></i>
+                                                        </a>
+
+                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                                                            <i class="fa fa-fw fa-close"></i>
+                                                        </a>
                                                     </td> {{-- /End Options --}}
                                                 </tr>
                                             @endforeach
@@ -72,3 +83,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>$(function () {$('[data-toggle="tooltip"]').tooltip()})</script>
+@endpush

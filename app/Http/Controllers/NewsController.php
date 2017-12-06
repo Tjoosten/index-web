@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsValidator;
 use App\Repositories\NewsRepository;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -48,8 +49,14 @@ class NewsController extends Controller
         return view('news.backend-create');
     }
 
-    public function store(NewsValidator $input)
+    /**
+     * @param  NewsValidator $input
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(NewsValidator $input): RedirectResponse
     {
+        // TODO: Create slug for the article.
+
         $input->merge(['author_id' => $input->user()->id]);
 
         if ($article = $this->newsRepository->create($input->except(['_token']))) {
