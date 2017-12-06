@@ -58,7 +58,6 @@ class NewsController extends Controller
     /**
      * Slaag een nieuw bericht op in de database.
      *
-     * @todo Create slug for friendlier urls.
      * @todo Attach categories to the post.
      * @todo Implement activity logger
      *
@@ -77,6 +76,21 @@ class NewsController extends Controller
         }
 
         return redirect()->route('news.admin.index');
+    }
+
+    /**
+     * Geef een specifiek artikel weer. Indien een artikel niet gevonden is zal er
+     * een error worden weeregegen. (HTTP 404 - Not Found)
+     *
+     * @param  string $articleSlug The slug voor het gegeven artikel. (slug = URI fragment)
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show($articleSlug): View
+    {
+        $article = $this->newsRepository->entity()->whereSlug($articleSlug)->firstOrFail();
+
+        return view('news.show', compact('article'));
     }
 
     /**

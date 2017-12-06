@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 use Spatie\MediaLibrary\Media;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
 /**
@@ -16,7 +18,7 @@ use Spatie\Translatable\HasTranslations;
  */
 class News extends Model implements HasMediaConversions
 {
-    use HasTranslations, HasMediaTrait;
+    use HasTranslations, HasMediaTrait, HasSlug;
 
 
     /**
@@ -24,7 +26,7 @@ class News extends Model implements HasMediaConversions
      *
      * @var array
      */
-    protected $fillable = ['publish_date', 'title', 'message', 'author_id'];
+    protected $fillable = ['slug', 'publish_date', 'title', 'message', 'author_id'];
 
     /**
      * Translation fields for the database table.
@@ -55,5 +57,17 @@ class News extends Model implements HasMediaConversions
             ->width(750)
             ->height(300)
             ->optimize();
+    }
+
+    /**
+     * Get the options for generating the slug.
+     *
+     * @return \Spatie\Sluggable\SlugOptions
+     */
+    public function getSlugOptions() : SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug');
     }
 }
