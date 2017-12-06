@@ -68,6 +68,8 @@ class News extends Model implements HasMediaConversions
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->slugsShouldBeNoLongerThan(50)
+            ->usingLanguage('nl');
     }
 }

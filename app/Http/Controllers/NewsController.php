@@ -99,7 +99,7 @@ class NewsController extends Controller
      * @todo registreer de activiteits monitor.
      *
      * @param  int $articleId The unieke waarde foor de data in de opslag
-     * @return |Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function delete($articleId): RedirectResponse
     {
