@@ -6,6 +6,7 @@ use App\Http\Requests\NewsValidator;
 use App\Repositories\NewsRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 /**
@@ -44,25 +45,54 @@ class NewsController extends Controller
         ]);
     }
 
+    /**
+     * De creatie view voor een nieuw bericht.
+     *
+     * @return \Illuminate\View\View
+     */
     public function create(): View
     {
         return view('news.backend-create');
     }
 
     /**
-     * @param  NewsValidator $input
+     * Slaag een nieuw bericht op in de database.
+     *
+     * @todo Create slug for friendlier urls.
+     * @todo Attach categories to the post.
+     * @todo Implement activity logger
+     *
+     * @param  NewsValidator $input The given user input (Validated)
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(NewsValidator $input): RedirectResponse
     {
-        // TODO: Create slug for the article.
-
         $input->merge(['author_id' => $input->user()->id]);
 
         if ($article = $this->newsRepository->create($input->except(['_token']))) {
             $article->addMedia($input->file('article_image'))->toMediaCollection('images');
 
             flash("Het nieuws bericht is opgeslagen in het systeem.")->success();
+        }
+
+        return redirect()->route('news.admin.index');
+    }
+
+    /**
+     * Verwijder een artikel in de opslag. Hierdoor zullen ook de media assets verwijderd worden.
+     *
+     * @todo registreer de activiteits monitor.
+     *
+     * @param  int $articleId The unieke waarde foor de data in de opslag
+     * @return |Illuminate\Http\RedirectResponse
+     */
+    public function delete($articleId): RedirectResponse
+    {
+        $article = $this->newsRepository->find($articleId) ?: abort(Response::HTTP_NOT_FOUND);
+
+        if ($article->delete()) {
+            flash("{$article->title} is verwijderd uit het systeem.")->success();
         }
 
         return redirect()->route('news.admin.index');

@@ -29,6 +29,7 @@ Route::post('/admin/meld-probleem-hook', 'BugController@send')->name('bug.meldin
 // News Routes
 Route::get('/admin/nieuws', 'NewsController@backendIndex')->name('news.admin.index');
 Route::get('/admin/nieuws/nieuw', 'NewsController@create')->name('news.admin.create');
+Route::get('/admin/news/delete/{id}', 'NewsController@delete')->name('news.admin.delete');
 Route::post('admin/news/opslaan', 'NewsController@store')->name('news.admin.store');
 
 // Visie routes

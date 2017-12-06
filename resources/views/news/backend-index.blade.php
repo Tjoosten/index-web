@@ -61,7 +61,7 @@
                                                             <i class="fa fa-fw fa-pencil fa-close"></i>
                                                         </a>
 
-                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Verwijder berich">
+                                                        <a class="text-muted" href="{{ route('news.admin.delete', $message) }}" data-toggle="tooltip" data-placement="bottom" title="Verwijder bericht">
                                                             <i class="fa fa-fw fa-close"></i>
                                                         </a>
                                                     </td> {{-- /End Options --}}
