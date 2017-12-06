@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\NewsRepository;
 use Illuminate\View\View;
 
 /**
@@ -11,14 +12,19 @@ use Illuminate\View\View;
  */
 class FrontController extends Controller
 {
+    private $newsRepository; /** @var NewsController $newsRepository */
+
     /**
      * FrontController constructor.
      *
+     * @param NewsRepository $newsRepository Abstraction layer between database and controller.
+     *
      * @return void
      */
-    public function __construct()
+    public function __construct(NewsRepository $newsRepository)
     {
         $this->middleware('lang');
+        $this->newsRepository = $newsRepository;
     }
 
     /**
@@ -28,6 +34,8 @@ class FrontController extends Controller
      */
     public function index(): View
     {
-        return view('welcome');
+        return view('welcome', [
+            'messages' => $this->newsRepository->entity()->simplePaginate(3)
+        ]);
     }
 }
