@@ -19,24 +19,14 @@ class CreateNewsTable extends Migration
             //      "publish_date" => "2017-12-05",
             //      "article_image" => UploadedFile {#434 ▶}
             //      "is_published" => null
-            //      "title" => array:3 [▼
-            //          "nl" => null
-            //          "fr'" => null
-            //          "en" => null
-            //      ]
-            //      "categories" => array:3 [▼
-            //          "nl" => null
-            //          "fr" => null
-            //          "en" => null
-            //      ]
-            //      "message" => array:3 [▼
-            //          "nl" => null
-            //          "fr" => null
-            //          "en" => null
-            //      ]
             // ]
 
             $table->increments('id');
+            $table->integer('author_id');
+            $table->string('is_published')->default('N');
+            $table->text('title');
+            $table->text('message');
+            $table->timestamp('publish_date');
             $table->timestamps();
         });
     }

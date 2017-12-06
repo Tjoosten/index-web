@@ -3,28 +3,31 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
+use Spatie\Translatable\HasTranslations;
 
-class News extends Model
+class News extends Model implements HasMediaConversions
 {
-    //  array:6 [▼
-    //      "_token" => "9PQO9CuTUcTWgTkyXme5MiNocrZLTH7zUiMFqC6e"
-    //      "publish_date" => "2017-12-05",
-    //      "article_image" => UploadedFile {#434 ▶}
-    //      "is_published" => null
-    //      "title" => array:3 [▼
-    //          "nl" => null
-    //          "fr'" => null
-    //          "en" => null
-    //      ]
-    //      "categories" => array:3 [▼
-    //          "nl" => null
-    //          "fr" => null
-    //          "en" => null
-    //      ]
-    //      "message" => array:3 [▼
-    //          "nl" => null
-    //          "fr" => null
-    //          "en" => null
-    //      ]
-    // ]
+    use HasTranslations, HasMediaTrait;
+
+    protected $fillable = ['publish_date', 'title', 'message', 'author_id'];
+
+    public $translatable = ['title', 'categories', 'message'];
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb-image')
+            ->width(750)
+            ->height(300)
+            ->optimize();
+    }
 }

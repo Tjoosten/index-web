@@ -30,7 +30,9 @@ class NewsValidator extends FormRequest
             'article_image' => 'required',
 
             // Required text data
-            '*.nl' => 'required|max:255',
+            'title.nl'      => 'required|max:255',
+            'categories.nl' => 'required',
+            'message.nl'    => 'required',
 
             // Additional fields.
             'title.fr'  => 'max:255',
@@ -46,13 +48,13 @@ class NewsValidator extends FormRequest
         return [
             // Required data
             'title.nl.required'         => 'De titel is verplicht in het Nederlands.',
-            'title.nl.max'              => "De titel kan maax maximum 255 karakters bevatten.",
+            'title.nl.max'              => "De titel kan max maximum 255 karakters bevatten.",
             'message.nl.required'       => 'Het inhoud van de nieuws post is verplicht.',
             'categories.nl.required'    => 'Je heb geen categorie opgegeven.',
 
             // Additional fields
-            'title.fr.max'  => 'De titel kan maax maximum 255 karakters bevatten.',
-            'title.en.max'  => 'De titel kan maax maximum 255 karakters bevatten.',
+            'title.fr.max'  => 'De titel kan max maximum 255 karakters bevatten.',
+            'title.en.max'  => 'De titel kan max maximum 255 karakters bevatten.',
         ];
     }
 }

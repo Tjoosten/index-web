@@ -50,26 +50,14 @@ class NewsController extends Controller
 
     public function store(NewsValidator $input)
     {
-        //  array:6 [▼
-        //      "_token" => "9PQO9CuTUcTWgTkyXme5MiNocrZLTH7zUiMFqC6e"
-        //      "publish_date" => "2017-12-05",
-        //      "article_image" => UploadedFile {#434 ▶}
-        //      "is_published" => null
-        //      "title" => array:3 [▼
-        //          "nl" => null
-        //          "fr'" => null
-        //          "en" => null
-        //      ]
-        //      "categories" => array:3 [▼
-        //          "nl" => null
-        //          "fr" => null
-        //          "en" => null
-        //      ]
-        //      "message" => array:3 [▼
-        //          "nl" => null
-        //          "fr" => null
-        //          "en" => null
-        //      ]
-        // ]
+        $input->merge(['author_id' => $input->user()->id]);
+
+        if ($article = $this->newsRepository->create($input->except(['_token']))) {
+            $article->addMedia($input->file('article_image'))->toMediaCollection('images');
+
+            flash("Het nieuws bericht is opgeslagen in het systeem.")->success();
+        }
+
+        return redirect()->route('news.admin.index');
     }
 }

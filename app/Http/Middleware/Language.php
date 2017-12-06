@@ -11,11 +11,7 @@ class Language
     /**
      * @var array
      */
-    protected static $supportedLanguages = [
-        'nl',
-        'en',
-        'fr',
-    ];
+    protected static $supportedLanguages = ['nl', 'en', 'fr'];
 
     /**
      * Handle an incoming request.
