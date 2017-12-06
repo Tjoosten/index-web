@@ -53,15 +53,15 @@
                                                     <td>{{ $message->created_at->diffForHumans() }}</td>
 
                                                     <td class="text-right"> {{-- Options --}}
-                                                        <a class="text-muted" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                                                        <a class="text-muted" data-toggle="tooltip" data-placement="bottom" title="Bekijk bericht">
                                                             <i class="fa fa-fw fa-file-text-o"></i>
                                                         </a>
 
-                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Wijzig bericht">
                                                             <i class="fa fa-fw fa-pencil fa-close"></i>
                                                         </a>
 
-                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                                                        <a class="text-muted" href="" data-toggle="tooltip" data-placement="bottom" title="Verwijder berich">
                                                             <i class="fa fa-fw fa-close"></i>
                                                         </a>
                                                     </td> {{-- /End Options --}}
